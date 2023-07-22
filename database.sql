@@ -79,3 +79,11 @@ VALUES
 (12,6), (12,3),           -- Social Net
 (13,6), (13,10), (13,1),  -- Titanic
 (14,1), (14,2), (14,4);   -- Toy Story
+
+
+-- GET for Genre 
+SELECT "genres"."name", "movies"."title" FROM "movies_genres"
+JOIN "movies"
+ON "movies"."id" = "movies_genres"."movie_id"
+JOIN "genres"
+ON "genres"."id" = "movies_genres"."genre_id";
