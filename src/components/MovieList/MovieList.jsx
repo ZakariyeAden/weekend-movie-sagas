@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./MovieList.css";
 import { Grid, CardMedia, Typography, Card } from "@mui/material";
 import { Link } from "react-router-dom";
-function MovieList() {
+function MovieList(movie) {
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movies);
 
@@ -19,8 +19,8 @@ function MovieList() {
         <Grid container spacing={2}>
           {movies.map(movie => {
             return (
-                <Grid item lg={2} md={4} xs={6}>
-                    <Link to={`/details${movie.id}`}>
+              <Grid item lg={2} md={4} xs={6}>
+                <Link to={`/details/${movie.id}`}>
                   <Card
                     key={movie.id}
                     sx={{ maxWidth: 345 }}
@@ -36,8 +36,8 @@ function MovieList() {
                   <Typography gutterBottom variant="h5" component="div">
                     {movie.title}
                   </Typography>
-              </Link>
-                </Grid>
+                </Link>
+              </Grid>
             );
           })}
         </Grid>
@@ -45,5 +45,6 @@ function MovieList() {
     </main>
   );
 }
+
 
 export default MovieList;
