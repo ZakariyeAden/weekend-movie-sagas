@@ -24,19 +24,22 @@ const MovieForm = () => {
     // Set the user input for image
     setMovieImage(event.target.value);
   };
-// Set the data into object
-  let movieData = {
-    title:movieTitle,
-    poster:movieImage,
-    description:movieDescription
-  }
+  // Set the data into object
+
   const submitMovieHandler = event => {
     event.preventDefault();
-    console.log("Movie submitted!", );
-    dispatch({type: 'ADD_MOVIES', payload:  movieTitle, movieDescription, movieImage})
+    console.log("Movie submitted!");
+    dispatch({
+      type: "ADD_MOVIES",
+      payload: {
+        title: movieTitle,
+        poster: movieImage,
+        description: movieDescription,
+      },
+    });
   };
   return (
-    <form >
+    <form>
       <h2>Add a Movie</h2>
       <TextField
         id="outlined-basic"

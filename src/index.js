@@ -43,11 +43,9 @@ function* fetchIndivualMovie(action) {
 // POST: post the data recieved in the DB and display it in the DOM!
 function* addMovies(action) {
   try {
-    yield axios.post("/api/movie/", {
-      title: action.payload,
-      poster: action.payload,
-      description: action.payload,
-    });
+    yield axios.post("/api/movie/", 
+      action.payload
+    );
     // Update in the GET
     yield put({ type: "FETCH_MOVIES" });
     // Catch Errors
