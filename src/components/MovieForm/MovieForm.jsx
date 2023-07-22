@@ -7,6 +7,8 @@ const MovieForm = () => {
   const [movieTitle, setMovieTitle] = useState("");
   const [movieDescription, setMovieDescription] = useState("");
   const [movieImage, setMovieImage] = useState("");
+  const dispatch = useDispatch();
+
   const handleTitleChange = event => {
     console.log("added title!");
     // Set the user input for title
@@ -22,17 +24,19 @@ const MovieForm = () => {
     // Set the user input for image
     setMovieImage(event.target.value);
   };
-
+// Set the data into object
   let movieData = {
-    title: movieTitle,
-    description: movieDescription,
-    poster: movieImage,
-  };
+    title:movieTitle,
+    poster:movieImage,
+    description:movieDescription
+  }
   const submitMovieHandler = event => {
-    console.log("Movie submitted!", movieData);
+    event.preventDefault();
+    console.log("Movie submitted!", );
+    dispatch({type: 'ADD_MOVIES', payload:  movieTitle, movieDescription, movieImage})
   };
   return (
-    <form onSubmit={submitMovieHandler}>
+    <form >
       <h2>Add a Movie</h2>
       <TextField
         id="outlined-basic"
@@ -40,6 +44,7 @@ const MovieForm = () => {
         variant="outlined"
         type="text"
         onChange={handleTitleChange}
+        value={movieTitle}
       />
       <TextField
         id="outlined-basic"
@@ -47,6 +52,7 @@ const MovieForm = () => {
         variant="outlined"
         type="text"
         onChange={handleImageChange}
+        value={movieImage}
       />
       <TextField
         id="outlined-basic"
@@ -54,8 +60,9 @@ const MovieForm = () => {
         variant="outlined"
         type="text"
         onChange={handleDescriptionChange}
+        value={movieDescription}
       />
-      <Button variant="contained" type="submit">
+      <Button variant="contained" type="submit" onClick={submitMovieHandler}>
         Add Movie
       </Button>
     </form>
