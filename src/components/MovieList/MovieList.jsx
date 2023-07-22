@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./MovieList.css";
-import { Grid, CardMedia, Typography, Card } from "@mui/material";
+import { Grid, CardMedia, Typography, Card,Button } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
-import MovieForm from "../MovieForm/MovieForm";
+
 function MovieList(movie) {
   // Hooks
   const dispatch = useDispatch();
@@ -25,7 +25,10 @@ function MovieList(movie) {
   }, []);
   return (
     <main>
-      <MovieForm />
+      {/* Route to Form page*/}
+      <Button variant="contained" onClick={() => history.push("/addmovie")}>
+        Add Movie
+      </Button>
       <h2>MovieList</h2>
       <section className="movies">
         {/* Making it responsive on all devices by using mui Grid */}
