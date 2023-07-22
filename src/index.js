@@ -32,8 +32,8 @@ function* fetchAllMovies() {
 // Details 
 function* fetchIndivualMovie(action){
     try{
-        const movies = yield axios.get(`/api/movie/${action.payload.id}`);
-        yield put({ type: 'SET_MOVIES', payload: movies.data });
+        const movies = yield axios.get(`/api/movie/${action.payload}`);
+        yield put({ type: 'SET_MOVIE_ITEM', payload: movies.data });
         console.log('Indiviual movie:',movies.data)
     }catch(err){
         console.log('ERRORS in getting indiviual movie',err);
@@ -61,12 +61,21 @@ const genres = (state = [], action) => {
             return state;
     }
 }
-
+// Indiviual movie item
+const movieItem = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_ITEM':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieItem
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
