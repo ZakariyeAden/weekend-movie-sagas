@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./MovieList.css";
 import { Grid, CardMedia, Typography, Card,Button } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
+import MovieGenre from "../MovieGenre/MovieGenre";
 
 function MovieList(movie) {
   // Hooks
@@ -10,7 +11,7 @@ function MovieList(movie) {
   const history = useHistory();
   const movies = useSelector(store => store.movies);
 
-  //   Get the movie Item Clicked on and head to the details.
+  // Get the movie Item Clicked on and head to the details.
   // Using this method but will change it to useParams!
   function movieItem(id) {
     // See the the Movie they selected
@@ -19,9 +20,10 @@ function MovieList(movie) {
     history.push("/details");
   }
 
-  // Load all of the movies
+  // Load all of the movies and genres!
   useEffect(() => {
     dispatch({ type: "FETCH_MOVIES" });
+    dispatch({ type: 'FETCH_GENRES'})
   }, []);
   return (
     <main>
@@ -30,6 +32,7 @@ function MovieList(movie) {
         Add Movie
       </Button>
       <h2>MovieList</h2>
+          <MovieGenre/>
       <section className="movies">
         {/* Making it responsive on all devices by using mui Grid */}
         <Grid container spacing={2}>

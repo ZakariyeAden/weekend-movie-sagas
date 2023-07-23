@@ -82,7 +82,7 @@ VALUES
 
 
 -- GET for Genre 
-SELECT "genres"."name", "movies"."title" FROM "movies_genres"
+SELECT * FROM "movies_genres"
 JOIN "movies"
 ON "movies"."id" = "movies_genres"."movie_id"
 JOIN "genres"
