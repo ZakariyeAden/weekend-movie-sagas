@@ -5,8 +5,8 @@ const MovieGenre = () => {
   const genres = useSelector(state => state.genres);
   return (
     <div>
-  {/* Doing it in separate but should
-      do in MovieList and do condional render to display
+  {/* Doing it in separate component but should
+      do it in MovieList and do condional render to display
       once selected a genre and movie data */}
       {genres.map(genre => {
         return (

@@ -32,7 +32,7 @@ function MovieList(movie) {
         Add Movie
       </Button>
       <h2>MovieList</h2>
-          <MovieGenre/>
+          {/* <MovieGenre/> */}
       <section className="movies">
         {/* Making it responsive on all devices by using mui Grid */}
         <Grid container spacing={2}>
